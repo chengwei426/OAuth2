@@ -8,20 +8,19 @@
       <configuration>
         <webroots />
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/../oauth2.0-resources-order/src/main/java" />
-          <root url="file://$MODULE_DIR$/../oauth2.0-resources-order/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
       </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
-    <output url="file://$MODULE_DIR$/../oauth2.0-resources-order/target/classes" />
-    <output-test url="file://$MODULE_DIR$/../oauth2.0-resources-order/target/test-classes" />
-    <content url="file://$MODULE_DIR$/../oauth2.0-resources-order">
-      <sourceFolder url="file://$MODULE_DIR$/../oauth2.0-resources-order/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../oauth2.0-resources-order/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../oauth2.0-resources-order/src/main/resources" type="java-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/../oauth2.0-resources-order/target" />
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

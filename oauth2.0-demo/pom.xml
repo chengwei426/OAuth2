@@ -10,7 +10,6 @@
     <modules>
         <module>oauth2.0-server</module>
         <module>oauth2.0-resources-order</module>
-        <module>spring-boot-oauth2.0-resources</module>
     </modules>
 
     <parent>

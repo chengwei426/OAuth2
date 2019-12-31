@@ -13,6 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -48,7 +49,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private static final int REFRESH_TOKEN_VALID_SECONDS = 7200;
 
     @Autowired
-    // @Qualifier("authenticationManagerBean")
+   // @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -88,11 +89,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         // 允许表单认证
         //authServer.allowFormAuthenticationForClients();
         // 允许check_token访问
-        authServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+        authServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()").allowFormAuthenticationForClients();
     }
 
 
 
+    @Bean
     AuthenticationManager authenticationManager() {
         AuthenticationManager authenticationManager = new AuthenticationManager() {
             @Override
@@ -116,6 +118,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     // 设置添加用户信息, 正常应该从数据库中读取
     @Bean
     UserDetailsService userDetailsService() {
+        // 可以设置成数据库的用户
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
         userDetailsManager.createUser(User.withUsername("user_1").password(passwordEncoder().encode("123456"))
                 .authorities("ROLE_USER").build());
@@ -129,7 +132,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     PasswordEncoder passwordEncoder() {
         // 加密方式
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder;
+        /*BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder;*/
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
